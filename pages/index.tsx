@@ -45,6 +45,7 @@ const Home: NextPage = () => {
         setAgeMetadata({
           isTooYoung,
           isTooOld,
+          ageObj: undefined,
         });
       } else {
         const ageObj = calculateFullAge(age);
