@@ -23,10 +23,12 @@ const Home: NextPage = () => {
   const [ageMetadata, setAgeMetadata] = useState<{
     isTooYoung: boolean;
     isTooOld: boolean;
-    ageObj: {
-      years: number;
-      months: number;
-    };
+    ageObj:
+      | {
+          years: number;
+          months: number;
+        }
+      | undefined;
   }>({} as any);
   const [hover, setHover] = useState(false);
 
@@ -40,6 +42,10 @@ const Home: NextPage = () => {
       const isTooOld = isBefore(age, maxAge);
       if (isTooOld || isTooYoung) {
         setIsEligible(false);
+        setAgeMetadata({
+          isTooYoung,
+          isTooOld,
+        });
       } else {
         const ageObj = calculateFullAge(age);
         const ageUntilIneligible = {
@@ -101,10 +107,10 @@ const Home: NextPage = () => {
           <p style={{ fontWeight: "bold" }}>Yes, you made the cut!</p>
           <p>
             You are{" "}
-            {ageMetadata.ageObj.years !== 0
-              ? `${ageMetadata.ageObj.years} years and `
+            {ageMetadata?.ageObj?.years !== 0
+              ? `${ageMetadata?.ageObj?.years} years and `
               : ""}
-            {ageMetadata.ageObj.months} months away from being dumped by Leo.
+            {ageMetadata?.ageObj?.months} months away from being dumped by Leo.
           </p>
         </>
       )}
