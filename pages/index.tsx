@@ -25,11 +25,6 @@ const Home: NextPage = () => {
       const age = new Date(date);
       const isTooYoung = isAfter(age, minAge);
       const isTooOld = isBefore(age, maxAge);
-      console.log({
-        isTooYoung,
-        isTooOld,
-        age: formatDistanceToNowStrict(age),
-      });
       if (isTooOld || isTooYoung) {
         setIsEligible(false);
       } else {
