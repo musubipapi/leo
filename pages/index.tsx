@@ -106,7 +106,13 @@ const Home: NextPage = () => {
       {isEligible && (
         <>
           <p style={{ fontWeight: "bold" }}>Yes, you made the cut!</p>
-          <p style={{ paddingLeft: "10px", paddingRight: "10px" }}>
+          <p
+            style={{
+              paddingLeft: "10px",
+              paddingRight: "10px",
+              textAlign: "center",
+            }}
+          >
             You are{" "}
             {ageMetadata?.ageObj?.years !== 0
               ? `${ageMetadata?.ageObj?.years} years and `
